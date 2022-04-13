@@ -8,11 +8,10 @@ import { Route, Routes} from "react-router-dom";
 function App() {
     return (
         <div className="App">
-            <Auth/>
-            {/*<Routes>*/}
-            {/*    <Route exact path={'/main'} element={<Main/>}/>*/}
-            {/*    <Route exact path={'/login'} element={<Auth/>}/>*/}
-            {/*</Routes>*/}
+            <Routes>
+                <Route exact path='/main' element={<Main/>}/>
+                <Route exact path='/login' element={<Auth/>}/>  {/* почему тут только '/' ?*/}
+            </Routes>
         </div>
     );
 }

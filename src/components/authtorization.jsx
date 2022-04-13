@@ -38,12 +38,12 @@ function Auth(){
         }
     }
 
-    axios.post('/login', {
+    axios.post('/login', { //какой url ?
             password: password,
             login: login,
         }, {
             headers: {
-                'content-type': '/path'}
+                'content-type': '/path'} //какой content-type? (что должно быть) ?
 }).then(()=>{
         navigate('/main') // на какую страницу нас перебросит после ввода пароля и логина
     }).catch((err)=>{
