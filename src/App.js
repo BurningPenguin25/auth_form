@@ -10,7 +10,7 @@ function App() {
         <div className="App">
             <Routes>
                 <Route exact path='/main' element={<Main/>}/>
-                <Route exact path='/login' element={<Auth/>}/>  {/* почему тут только '/' ?*/}
+                <Route exact path='/login' element={<Auth/>}/>
             </Routes>
         </div>
     );
