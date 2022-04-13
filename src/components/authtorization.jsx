@@ -52,32 +52,32 @@ if(err.response.status === 401){
 }
 });
 
-
     return(
-        <div>
-       <h2>Регистрация</h2>
-<form>
-            <input error={loginError !== '' ? loginError : 'текст?'} type={'text'} id={'login'} label={'login'}  onChange={(e)=>{
-                setLoginError('');
-                setLogin(e.target.value)
-            }}/>
-
-            <input error={passwordError !== '' ? passwordError : 'текст?'} type={'password'} id={'password'} label={'password'} onChange={(e)=>{
-                setLoginError('');
-                setPassword(e.target.value)
-            }}/>
-            <a href={'/path'}>восстановить</a>
-
-            {error && <div>{error}</div>}
-            {!error && <button onClick={SendPL}> отправить </button>}
-</form>
+        <div id="range5">
+            <div className="outer">
+                <div className="middle">
+                    <div className="inner">
+                        <div className="login-wr">
+                            <h2>Вход</h2>
+                            <form className="form">
+                                <input   placeholder="Login" error={loginError !== '' ? loginError : 'текст?'} type={'text'} id={'login'} label={'login'}  onChange={(e)=>{
+                                    setLoginError('');
+                                    setLogin(e.target.value)
+                                }}/>
+                                <input  placeholder="Password" error={passwordError !== '' ? passwordError : 'текст?'} type={'password'} id={'password'} label={'password'} onChange={(e)=>{
+                                    setLoginError('');
+                                    setPassword(e.target.value)
+                                }}/>
+                                {error && <div>{error}</div>}
+                                {!error && <button onClick={SendPL}> отправить </button>}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-
     )
-
 }
-
-
-// в error={loginError !== '' ? loginError : 'текст?'} //
 export default Auth
+
+
