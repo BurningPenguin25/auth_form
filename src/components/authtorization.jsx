@@ -44,8 +44,7 @@ function Auth(){
         }, {
             headers: {
                 'content-type': '/path'}
-}).then((response)=>{
-        // dispatch() // ???
+}).then(()=>{
         navigate('/main') // на какую страницу нас перебросит после ввода пароля и логина
     }).catch((err)=>{
 if(err.response.status === 401){
@@ -62,7 +61,8 @@ if(err.response.status === 401){
                 setLoginError('');
                 setLogin(e.target.value)
             }}/>
-            <input error={passwordError !== '' ? loginError : 'текст?'}   type={'password'} id={'password'} label={'password'} onChange={(e)=>{
+
+            <input error={passwordError !== '' ? passwordError : 'текст?'} type={'password'} id={'password'} label={'password'} onChange={(e)=>{
                 setLoginError('');
                 setPassword(e.target.value)
             }}/>
@@ -77,6 +77,7 @@ if(err.response.status === 401){
     )
 
 }
-//  из error={loginError !== ''}
+
+
 // в error={loginError !== '' ? loginError : 'текст?'} //
 export default Auth
