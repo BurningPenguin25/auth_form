@@ -37,7 +37,6 @@ function Auth(){
         if(login.length === 0 || password.length === 0){
             return;
         }
-    }
 
 
     axios.post('/login', { //какой url ?
@@ -53,8 +52,7 @@ if(err.response.status === 401){
     setError('ошибка - неверный пароль и логин ') // ошибка пароля
 }
 });
-
-
+    }
 
     const emailCheck = (em) =>{
         setLogin(em.target.value)
@@ -65,7 +63,6 @@ if(err.response.status === 401){
             setLoginError('')
         }
     }
-
 
     const passwordCheck = (pa) =>{
         setPassword(pa.target.value)
@@ -85,8 +82,6 @@ if(err.response.status === 401){
                     <div className="inner">
                         <div className="login-wr">
                             <h2>Вход</h2>
-                            <form className="form">
-
 
                                 {(loginError) && <div style={{color: 'red'}}> {loginError} </div>}
                                 <input   placeholder="Login"  type={'text'} id={'login'} label={'login'}  onBlur={(e)=>{
@@ -94,7 +89,6 @@ if(err.response.status === 401){
                                     setLogin(e.target.value)
                                     emailCheck(e)
                                 }}/>
-
 
                                 {(passwordError)&& <div style={{color: 'red'}}>{passwordError}</div>}
                                 <input placeholder="Password"  type={'password'} id={'password'} label={'password'}
@@ -104,9 +98,8 @@ if(err.response.status === 401){
                                     passwordCheck(e)
                                 }}/>
 
-                                {error && <div>{error}</div>}
-                                {!error && <button onClick={SendPL}> отправить </button>}
-                            </form>
+                                {(!error) && <button type={'submit'} onClick={SendPL}> отправить </button>}
+
                         </div>
                     </div>
                 </div>
@@ -116,5 +109,3 @@ if(err.response.status === 401){
 }
 export default Auth
 
-//error={loginError !== '' ? loginError : 'текст?'}
-//error={passwordError !== '' ? passwordError : 'текст?'}
