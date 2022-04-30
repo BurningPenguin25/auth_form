@@ -66,14 +66,21 @@ if(err.response.status === 401){
 
     const passwordCheck = (pa) =>{
         setPassword(pa.target.value)
-        const password = /^[a-zA-Z0-9!@#$%^&*]{6,10}$/;
+        const password = /^[a-zA-Z0-9!@#$%^&*]{6,100}$/;
      if(!password.test(String(pa.target.value).toLowerCase())){
-    setPasswordError('введите пароль от 6 до 10 симаолов')
+    setPasswordError('введите пароль от 6 до 100 симаолов')
          } else {
          setPasswordError('')
      }
     }
 
+    function errButton(){
+        if(error || passwordError || loginError){
+            return <button disabled={true}> отправить </button>
+        } else {
+            return <button type={'submit'} onClick={SendPL}> отправить </button>
+        }
+    }
 
     return(
         <div id="range5">
@@ -98,7 +105,8 @@ if(err.response.status === 401){
                                     passwordCheck(e)
                                 }}/>
 
-                                {(!error) && <button type={'submit'} onClick={SendPL}> отправить </button>}
+                            {/*если ошибка, кнопка disabled, если нет, то */}
+                            {errButton()}
 
                         </div>
                     </div>
