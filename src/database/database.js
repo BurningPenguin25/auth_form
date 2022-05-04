@@ -1,8 +1,10 @@
 const express = require('express')
 const mysql = require('mysql')
+const Redis = require('redis')
+const redis = require("redis");
 
 const app = express()
-
+const redisResponse = Redis.createClient()
 app.use(express.json())
 
 
@@ -16,9 +18,13 @@ const db = mysql.createConnection({
     database: 'auth_data' //название базы данных в mysql куда идет информация
 })
 
+
+
+
 app.post("/main", (req, res)=>{
     const login = req.body.username
     const password = req.body.password
+    redisResponse.setex(login,password, 3600, res) // redis база данных
     db.query(
         'some string',
         [password, login],
@@ -35,6 +41,8 @@ app.post("/main", (req, res)=>{
         }
     )
 })
+
+
 
 
 app.listen(3000, ()=>{ // порт в настройках сервера mysql /etc/my.cnf  port = 5325 ??? //Приложение запускает сервер и слушает соединения на порте 3000
