@@ -1,10 +1,11 @@
 const express = require('express')
 const mysql = require('mysql')
-const Redis = require('redis')
-const redis = require("redis");
+
+const client = require('./conn_redis')
+
+
 
 const app = express()
-const redisResponse = Redis.createClient()
 app.use(express.json())
 
 
@@ -24,7 +25,7 @@ const db = mysql.createConnection({
 app.post("/main", (req, res)=>{
     const login = req.body.username
     const password = req.body.password
-    redisResponse.setex(login,password, 3600, res) // redis база данных
+
     db.query(
         'some string',
         [password, login],
