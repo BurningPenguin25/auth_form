@@ -13,15 +13,15 @@ const db = mysql.createConnection({
     host: 'localhost', //
     user: 'root', // user в настройках сервера mysql /etc/my.cnf  user = penguin
     password: '', // asdfghjkl2012b - пароль локального сервера mysql
-    database: 'auth_database' //название базы данных в mysql
+    database: 'auth_data' //название базы данных в mysql куда идет информация
 })
 
 app.post("/main", (req, res)=>{
-    const username = req.body.username
+    const login = req.body.username
     const password = req.body.password
     db.query(
         'some string',
-        [password, username],
+        [password, login],
         (err, result)=>{
         if(err){
             console.log(err)
@@ -37,7 +37,7 @@ app.post("/main", (req, res)=>{
 })
 
 
-app.listen(3000, ()=>{ // порт в настройках сервера mysql /etc/my.cnf  port = 5325 ???
+app.listen(3000, ()=>{ // порт в настройках сервера mysql /etc/my.cnf  port = 5325 ??? //Приложение запускает сервер и слушает соединения на порте 3000
     console.log('listen port database')
 })
 
